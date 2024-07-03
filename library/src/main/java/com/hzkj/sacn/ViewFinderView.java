@@ -11,7 +11,6 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
-import io.jitpack.api.R;
 
 public class ViewFinderView extends View implements IViewFinder {
     private static final String TAG = "ViewFinderView";

@@ -1,4 +1,2 @@
 include ':library'
-include ':sample'
-include ':myapplication'
-include ':myapplication2'
+include ':myapplication3'

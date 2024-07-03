@@ -1,5 +1,6 @@
 package com.hzkj.sacn;
 
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -13,7 +14,6 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorInt;
 
-import io.jitpack.api.R;
 
 public abstract class BarcodeScannerView extends FrameLayout implements Camera.PreviewCallback  {
 

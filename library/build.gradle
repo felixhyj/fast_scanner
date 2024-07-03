@@ -4,7 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.jitpack'
+group = 'com.hzkj.sacn'
 version = '1.0'
 
 android {
