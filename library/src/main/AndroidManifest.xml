@@ -1,2 +1,4 @@
-<manifest package="com.hzkj.sacn">
+<manifest package="com.hzkj.sacn" xmlns:android="http://schemas.android.com/apk/res/android">
+    
 </manifest>
+ 
