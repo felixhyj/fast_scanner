@@ -1,14 +1,13 @@
 package com.hzkj.sacn;
 
 import android.hardware.Camera;
-import android.support.annotation.NonNull;
 
 
 public class CameraWrapper {
     public final Camera mCamera;
     public final int mCameraId;
 
-    private CameraWrapper(@NonNull Camera camera, int cameraId) {
+    private CameraWrapper( Camera camera, int cameraId) {
         if (camera == null) {
             throw new NullPointerException("Camera cannot be null");
         }
