@@ -86,6 +86,7 @@ public class CameraTexturePreview extends TextureView implements TextureView.Sur
         if (mCameraWrapper != null) {
             try {
                 //getHolder().addCallback(this);
+                setSurfaceTextureListener(this);
                 mPreviewing = true;
                 setupCameraParameters();
                 mCameraWrapper.mCamera.setPreviewTexture(getSurfaceTexture());
