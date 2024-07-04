@@ -45,7 +45,7 @@ public class CameraTexturePreview extends TextureView implements TextureView.Sur
         setCamera(cameraWrapper, previewCallback);
         mAutoFocusHandler = new Handler();
         //getHolder().addCallback(this);
-        // getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        //getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         setSurfaceTextureListener(this);
     }
 
@@ -325,15 +325,16 @@ public class CameraTexturePreview extends TextureView implements TextureView.Sur
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int i, int i1) {
         mSurfaceCreated = true;
+     /*   if (getSurfaceTexture() == null) {
+            return;
+        }*/
+        stopCameraPreview();
+        showCameraPreview();
     }
 
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i1) {
-        if (getSurfaceTexture() == null) {
-            return;
-        }
-        stopCameraPreview();
-        showCameraPreview();
+
     }
 
     @Override
