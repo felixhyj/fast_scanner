@@ -350,8 +350,8 @@ public abstract class BarcodeScannerView extends FrameLayout implements Camera.P
     }
 
     public void setAreaPoint(int visibleWidth, int visibleHeight) {
-        VisibleAreaHelper.visibleWidth = visibleWidth;
-        VisibleAreaHelper.visibleHeight = visibleHeight;
+        VisibleAreaHelper.visibleWidth = visibleWidth*3;
+        VisibleAreaHelper.visibleHeight = visibleHeight*3;
     }
 }
 
