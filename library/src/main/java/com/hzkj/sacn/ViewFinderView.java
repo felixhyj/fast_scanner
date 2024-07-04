@@ -147,7 +147,7 @@ public class ViewFinderView extends View implements IViewFinder {
 
     @Override
     public void onDraw(Canvas canvas) {
-        if(getFramingRect() == null) {
+        /*if(getFramingRect() == null) {
             return;
         }
 
@@ -156,7 +156,7 @@ public class ViewFinderView extends View implements IViewFinder {
 
         if (mIsLaserEnabled) {
             drawLaser(canvas);
-        }
+        }*/
     }
 
     public void drawViewFinderMask(Canvas canvas) {
