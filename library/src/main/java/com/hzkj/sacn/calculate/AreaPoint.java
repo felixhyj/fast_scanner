@@ -16,6 +16,19 @@ public class AreaPoint {
 
     public int left;
     public int top;
+
+    @Override
+    public String toString() {
+        return "AreaPoint{" +
+                "left=" + left +
+                ", top=" + top +
+                ", visibleWidth=" + visibleWidth +
+                ", visibleHeight=" + visibleHeight +
+                ", screenWidth=" + screenWidth +
+                ", screenHeight=" + screenHeight +
+                '}';
+    }
+
     public int visibleWidth;
     public int visibleHeight;
     public int screenWidth;
