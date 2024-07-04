@@ -9,8 +9,8 @@ public class VisibleAreaHelper {
     public static int visibleHeight = 686;
 
     public static AreaPoint calculateVisibleAreaTopLeft(int screenWidth, int screenHeight) {
-        int left = ((screenWidth - visibleWidth) / 2);
-        int top = ((screenHeight - visibleHeight) / 2);
+        int left = ((screenWidth - visibleWidth*3) / 2);
+        int top = ((screenHeight - visibleHeight*3) / 2);
         return new AreaPoint(left, top, visibleWidth, visibleHeight, screenWidth, screenHeight);
     }
 }
