@@ -6,7 +6,7 @@ package com.hzkj.sacn.calculate;
  */
 public class VisibleAreaHelper {
     public static int visibleWidth = 666;
-    public static int visibleHeight = 666;
+    public static int visibleHeight = 686;
 
     public static AreaPoint calculateVisibleAreaTopLeft(int screenWidth, int screenHeight) {
         int left = ((screenWidth - visibleWidth) / 2);
