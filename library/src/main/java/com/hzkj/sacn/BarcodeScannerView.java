@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 public abstract class BarcodeScannerView extends FrameLayout implements Camera.PreviewCallback  {
 
     private CameraWrapper mCameraWrapper;
-    private CameraPreview mPreview;
+    private CameraTexturePreview mPreview;
     private IViewFinder mViewFinderView;
     private Rect mFramingRectInPreview;
     private CameraHandlerThread mCameraHandlerThread;
@@ -80,7 +80,7 @@ public abstract class BarcodeScannerView extends FrameLayout implements Camera.P
     public final void setupLayout(CameraWrapper cameraWrapper) {
         removeAllViews();
 
-        mPreview = new CameraPreview(getContext(), cameraWrapper, this);
+        mPreview = new CameraTexturePreview(getContext(), cameraWrapper, this);
         mPreview.setAspectTolerance(mAspectTolerance);
         mPreview.setShouldScaleToFill(mShouldScaleToFill);
         if (!mShouldScaleToFill) {
