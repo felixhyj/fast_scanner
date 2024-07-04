@@ -117,8 +117,10 @@ public class ZXingScannerView extends BarcodeScannerView {
             }
 
             Result rawResult = null;
+            Log.e("zxing_scanner width",String.valueOf(width));
+            Log.e("zxing_scanner height",String.valueOf(height));
             PlanarYUVLuminanceSource source = buildLuminanceSource(data, width, height);
-
+            Log.e("zxing_scanner",source.toString());
             if (source != null) {
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
                 try {
