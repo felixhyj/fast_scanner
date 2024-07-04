@@ -345,6 +345,6 @@ public class CameraTexturePreview extends TextureView implements TextureView.Sur
 
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
-
+        //dd
     }
 }
