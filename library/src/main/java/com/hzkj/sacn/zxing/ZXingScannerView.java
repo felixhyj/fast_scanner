@@ -21,6 +21,8 @@ import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.hzkj.sacn.BarcodeScannerView;
 import com.hzkj.sacn.DisplayUtils;
+import com.hzkj.sacn.calculate.AreaPoint;
+import com.hzkj.sacn.calculate.VisibleAreaHelper;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -81,14 +83,14 @@ public class ZXingScannerView extends BarcodeScannerView {
     }
 
     public Collection<BarcodeFormat> getFormats() {
-        if(mFormats == null) {
+        if (mFormats == null) {
             return ALL_FORMATS;
         }
         return mFormats;
     }
 
     private void initMultiFormatReader() {
-        Map<DecodeHintType,Object> hints = new EnumMap<>(DecodeHintType.class);
+        Map<DecodeHintType, Object> hints = new EnumMap<>(DecodeHintType.class);
         hints.put(DecodeHintType.POSSIBLE_FORMATS, getFormats());
         mMultiFormatReader = new MultiFormatReader();
         mMultiFormatReader.setHints(hints);
@@ -96,10 +98,10 @@ public class ZXingScannerView extends BarcodeScannerView {
 
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
-        if(mResultHandler == null) {
+        if (mResultHandler == null) {
             return;
         }
-        
+
         try {
             Camera.Parameters parameters = camera.getParameters();
             Camera.Size size = parameters.getPreviewSize();
@@ -117,8 +119,8 @@ public class ZXingScannerView extends BarcodeScannerView {
             }
 
             Result rawResult = null;
-            Log.e("zxing_scanner width",String.valueOf(width));
-            Log.e("zxing_scanner height",String.valueOf(height));
+            Log.e("zxing_scanner width", String.valueOf(width));
+            Log.e("zxing_scanner height", String.valueOf(height));
             PlanarYUVLuminanceSource source = buildLuminanceSource(data, width, height);
 
             if (source != null) {
@@ -170,7 +172,7 @@ public class ZXingScannerView extends BarcodeScannerView {
             } else {
                 camera.setOneShotPreviewCallback(this);
             }
-        } catch(RuntimeException e) {
+        } catch (RuntimeException e) {
             // TODO: Terrible hack. It is possible that this method is invoked after camera is released.
             Log.e(TAG, e.toString(), e);
         }
@@ -183,7 +185,7 @@ public class ZXingScannerView extends BarcodeScannerView {
 
     public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
         Rect rect = getFramingRectInPreview(width, height);
-        Log.e("zxing_scanner",rect.toString());
+        Log.e("zxing_scanner", rect.toString());
         if (rect == null) {
             return null;
         }
@@ -191,9 +193,12 @@ public class ZXingScannerView extends BarcodeScannerView {
         PlanarYUVLuminanceSource source = null;
 
         try {
-            source = new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top,
-                    rect.width(), rect.height(), false);
-        } catch(Exception e) {
+            AreaPoint areaPoint = VisibleAreaHelper.calculateVisibleAreaTopLeft(width, height);
+            Log.e("zxing_scanner", areaPoint.toString());
+            source = new PlanarYUVLuminanceSource(data, width, height, areaPoint.left, areaPoint.top,
+                    areaPoint.visibleWidth, areaPoint.visibleHeight, false);
+        } catch (Exception e) {
+
         }
 
         return source;
