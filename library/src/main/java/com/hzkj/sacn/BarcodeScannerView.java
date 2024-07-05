@@ -349,10 +349,11 @@ public abstract class BarcodeScannerView extends FrameLayout implements Camera.P
         return displayOrientation / 90;
     }
 
-    public void setAreaPoint(int visibleWidth, int visibleHeight) {
+    public void setAreaPoint(int visibleWidth, int visibleHeight,int visibleBottomOffset) {
 
         VisibleAreaHelper.visibleWidth = visibleWidth;
         VisibleAreaHelper.visibleHeight = visibleHeight;
+        VisibleAreaHelper.visibleBottomOffset = visibleBottomOffset;
 
     }
 }
